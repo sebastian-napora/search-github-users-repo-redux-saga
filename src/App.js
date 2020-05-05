@@ -2,6 +2,6 @@ import React from 'react'
 
 import { Content } from './components/content'
 
-import './assets/styles/main.scss'
+import './assets/styles/app.scss'
 
 export const App = () => <Content />
