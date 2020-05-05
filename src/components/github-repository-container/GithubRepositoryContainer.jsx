@@ -1,28 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { requestApiCallWithRepositories } from '../../store/actions/githubRepo'
+import { requestApiCallWithRepositories } from '../../store/actions/github-actions/github-actions'
 
 import { GithubRepository } from './GithubRepository'
 
 export const GithubRepositoryContainer = () => {
   const dispatch = useDispatch()
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [className, setClassName] = useState('collapse');
+  const [checkedUserName, setGetUserName] = useState('')
 
-  const users = useSelector(state => state.github.data);
+  const users = useSelector(state => state.users.data)
+  const repositories = useSelector(state => state.repositories.data)
 
-  const toggleCollapsed = () => setIsCollapsed(!isCollapsed);
-
-  const classNameHandlers = () => isCollapsed ? setClassName('collapse show') : setClassName('collapse')
-
-  useEffect(() => {
-    classNameHandlers()
-
-    return () => {
-      classNameHandlers()
-    }
-  }, [isCollapsed]);
+  const getUserName = userName => setGetUserName(userName)
 
   const getRepositories = userName =>  dispatch(requestApiCallWithRepositories(userName))
 
@@ -30,11 +20,17 @@ export const GithubRepositoryContainer = () => {
     <>
       {
         users
-          ? users.map(login => (
+          ? users.map(({ login, id }) => (
               <GithubRepository
-                key={login.login}
-                {...{ className, toggleCollapsed, getRepositories }}
-                userName={login.login}
+                key={login}
+                userName={login}
+                {...{
+                  getUserName,
+                  getRepositories,
+                  repositories,
+                  checkedUserName,
+                  id
+                }}
               />
             ))
           : ""

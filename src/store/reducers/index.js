@@ -1,12 +1,12 @@
 
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
-import github from './github/github';
-import repositories from './repository-reducer/repository'
+import { users } from './users-reducer/users-reducer'
+import { repositories } from './repository-reducer/repository'
 
 const rootReducer = combineReducers({
-  github,
+  users,
   repositories
-});
+})
 
-export default rootReducer;
+export default rootReducer

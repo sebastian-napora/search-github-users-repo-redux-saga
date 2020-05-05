@@ -1,1 +1,0 @@
-export const usersRepos = state => state.github
