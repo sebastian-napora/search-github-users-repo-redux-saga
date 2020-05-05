@@ -11,6 +11,7 @@ export const GithubRepositoryContainer = () => {
 
   const users = useSelector(state => state.users.data)
   const repositories = useSelector(state => state.repositories.data)
+  console.log(repositories)
 
   const getUserName = userName => setGetUserName(userName)
 

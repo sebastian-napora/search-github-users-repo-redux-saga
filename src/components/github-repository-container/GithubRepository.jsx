@@ -1,19 +1,22 @@
-import React from 'react';
+import React from 'react'
+
+import { CardRepository } from './card-repository/CardRepository'
+
+import './github-repository.scss'
 
 export const GithubRepository = ({
-  id,
   userName,
   repositories,
   checkedUserName,
   getUserName,
   getRepositories
 }) => (
-  <div className="accordion" id={`accordionExample ${userName}`}>
+  <div className="card-users" id={`card-${userName}`}>
     <div className="card">
       <div className="card-header">
-        <h2 className="mb-0">
+        <h2 className="mb-0 user-name">
           <button
-            className="btn btn-link"
+            className="btn btn__user"
             type="button"
             data-toggle="collapse"
             aria-expanded={false}
@@ -32,7 +35,9 @@ export const GithubRepository = ({
           {repositories
             ? repositories
                 .filter(repo => repo.owner.login === userName)
-                .map(repo => repo.name)
+                .map(({ name, stargazers_count, description }) => (
+                  <CardRepository key={name} {...{ name, stargazers_count, description }} />
+                ))
             : null}
         </div>
       </div>

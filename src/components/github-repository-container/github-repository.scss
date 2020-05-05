@@ -1,0 +1,22 @@
+@import '../../assets/styles/app.scss';
+
+.card-users {
+  padding: 0.5rem 0 0.5rem 0;
+
+  .btn {
+    &__user{
+      color: $main-font-color;
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  .card-header {
+    padding: 0;
+    font-size: 2rem;
+    color: $main-font-color;
+  }
+  .user-name{
+    background-color: $main-background-color;
+  }
+}
