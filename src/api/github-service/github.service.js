@@ -10,7 +10,13 @@ export default {
       console.log(err)
     }
   },
-  getRepositories (username) {
-    return Http.get(`users/${username}/repos`)
+  async getRepositories (username) {
+    try {
+      const data = await Http.get(`users/${username}/repos`)
+
+      return data
+    } catch (err) {
+      console.log(err)
+    }
   }
 }

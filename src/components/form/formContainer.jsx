@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { FormView } from './formView'
-import { requestApiCall, takeUserName } from '../../store/actions/githubRepo'
+import { requestApiCall } from '../../store/actions/githubRepo'
 
 
  const FormContainer = () => {
   const dispatch = useDispatch();
   const post = useSelector(state => state.github);
-   console.log(post.users)
-   console.log(post.repositories)
+   console.log(post.data)
 
   const [userName, setUserName] = useState('')
 
@@ -25,7 +24,7 @@ import { requestApiCall, takeUserName } from '../../store/actions/githubRepo'
     // dispatch(mySaga())
     // In a React component
     dispatch(requestApiCall(userName))
-  }
+   }
 
   return <FormView {...{ userNameHandler }} search={() => getUsers()}/>
 }

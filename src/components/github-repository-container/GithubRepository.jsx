@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const GithubRepository = ({ className, toggleCollapsed, userName }) => {
+export const GithubRepository = ({ className, toggleCollapsed, userName, getRepositories }) => {
   return (
     <div className="accordion" id="accordionExample">
       <div className="card">
@@ -13,7 +13,10 @@ export const GithubRepository = ({ className, toggleCollapsed, userName }) => {
               data-target="#collapseOne"
               aria-expanded="true"
               aria-controls="collapseOne"
-              onClick={() => toggleCollapsed()}
+              onClick={() => {
+                toggleCollapsed()
+                getRepositories(userName)
+              }}
             >
               { userName }
             </button>
