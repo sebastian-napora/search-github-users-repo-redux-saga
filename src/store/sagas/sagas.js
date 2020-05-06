@@ -4,7 +4,7 @@ import { receiveApiCall, receiveApiCallWithRepositories } from '../actions/githu
 
 import {
   REQUEST_API_REPOSITORIES,
-  USER_FETCH_FAILED,
+  FETCH_FAILED,
   REQUEST_API_USERS
 } from '../actions/typeActions'
 
@@ -17,7 +17,7 @@ function* getUsers (action) {
     const users = yield call(repositoriesService.get, userName)
     yield putResolve(receiveApiCall(users.data.items))
   } catch (error) {
-    yield put({ type: USER_FETCH_FAILED, message: error.message })
+    yield put({ type: FETCH_FAILED, message: error.message })
     console.log(error)
   }
 }
@@ -29,7 +29,7 @@ function* getRepositories (action) {
     const repositories = yield call(repositoriesService.getRepositories, userName)
     yield putResolve(receiveApiCallWithRepositories(repositories.data))
   } catch (error) {
-    yield put({ type: USER_FETCH_FAILED, message: error.message })
+    yield put({ type: FETCH_FAILED, message: error.message })
     console.log(error)
   }
 
