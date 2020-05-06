@@ -2,12 +2,12 @@ import { useCallback } from 'react'
 import { useDispatch } from 'react-redux';
 
 
-export const useCallbackData = (memorizedFunction, renderArgument) => {
+export const useCallbackData = (memorizedFunction, args) => {
   const dispatch = useDispatch()
 
   const callback = useCallback(() => {
-    renderArgument !== '' && dispatch(memorizedFunction(renderArgument))
-  }, [renderArgument])
+    args !== '' && dispatch(memorizedFunction(args))
+  }, [args])
 
   return { callback }
 }
