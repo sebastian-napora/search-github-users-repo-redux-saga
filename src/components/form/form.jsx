@@ -7,8 +7,6 @@ export const Form = ({ search, userNameHandler }) => (
         type="text"
         className="form-control"
         onChange={userNameHandler}
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
         placeholder="Enter username"
       />
     </div>

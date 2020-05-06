@@ -20,7 +20,7 @@ export const GithubRepositoryContainer = () => {
 
   useEffect(() => {
     callback()
-  }, [userNameFromHook]);
+  }, [userNameFromHook, callback]);
 
   return(
     <>

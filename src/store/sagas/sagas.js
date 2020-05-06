@@ -16,7 +16,6 @@ function* getUsers (action) {
   try {
     const users = yield call(repositoriesService.get, userName)
     yield putResolve(receiveApiCall(users.data.items))
-
   } catch (error) {
     yield put({ type: USER_FETCH_FAILED, message: error.message })
     console.log(error)
@@ -29,7 +28,6 @@ function* getRepositories (action) {
   try {
     const repositories = yield call(repositoriesService.getRepositories, userName)
     yield putResolve(receiveApiCallWithRepositories(repositories.data))
-
   } catch (error) {
     yield put({ type: USER_FETCH_FAILED, message: error.message })
     console.log(error)
