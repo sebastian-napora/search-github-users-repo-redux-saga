@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { FormView } from './formView'
+import { Form } from './form'
 import { requestApiCall } from '../../store/actions/github-actions/github-actions'
 
 export const FormContainer = () => {
@@ -13,5 +13,5 @@ export const FormContainer = () => {
 
   const getUsers = () => dispatch(requestApiCall(userName))
 
-  return <FormView {...{ userNameHandler }} search={() => getUsers()}/>
+  return <Form {...{ userNameHandler }} search={() => getUsers()}/>
 }

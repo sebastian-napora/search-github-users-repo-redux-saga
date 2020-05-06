@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const FormView = ({ search, userNameHandler }) => (
+export const Form = ({ search, userNameHandler }) => (
   <>
     <div className="form-group">
       <input

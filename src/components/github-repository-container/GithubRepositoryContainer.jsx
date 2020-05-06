@@ -8,10 +8,12 @@ import { GithubRepository } from './GithubRepository'
 export const GithubRepositoryContainer = () => {
   const dispatch = useDispatch()
   const [checkedUserName, setGetUserName] = useState('')
+  const [isShowDropdown, setIsShowDropdown] = useState(false)
 
   const users = useSelector(state => state.users.data)
   const repositories = useSelector(state => state.repositories.data)
-  console.log(repositories)
+
+  const toggleDropdown = () => setIsShowDropdown(!isShowDropdown)
 
   const getUserName = userName => setGetUserName(userName)
 
@@ -21,16 +23,17 @@ export const GithubRepositoryContainer = () => {
     <>
       {
         users
-          ? users.map(({ login, id }) => (
+          ? users.map(({ login }) => (
               <GithubRepository
                 key={login}
                 userName={login}
                 {...{
-                  getUserName,
-                  getRepositories,
+                  isShowDropdown,
                   repositories,
                   checkedUserName,
-                  id
+                  getUserName,
+                  getRepositories,
+                  toggleDropdown
                 }}
               />
             ))
