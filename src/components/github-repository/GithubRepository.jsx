@@ -8,13 +8,12 @@ import './github-repository.scss'
 export const GithubRepository = ({
   userName,
   repositories,
-  checkedUserName,
-  getUserName,
-  getRepositories,
+  userNameFromHook,
+  userNameHandler,
   isShowDropdown,
   toggleDropdown
 }) => (
-  <div className="card-users" id={`card-${userName}`}>
+  <div className="card-users">
     <div className="card">
       <div className="card-header">
         <h2 className="mb-0 user-name">
@@ -22,16 +21,14 @@ export const GithubRepository = ({
             className="btn btn__user"
             type="button"
             data-toggle="collapse"
-            aria-expanded={false}
             onClick={() => {
-              getUserName(userName)
-              getRepositories(userName)
+              userNameHandler(userName)
               toggleDropdown()
             }}
           >
               { userName }
               {
-                (checkedUserName === userName && !isShowDropdown)
+                (userNameFromHook === userName && isShowDropdown)
                   ? chevronDown
                   : chevronUp
               }
@@ -39,7 +36,7 @@ export const GithubRepository = ({
         </h2>
       </div>
 
-      <div className={(checkedUserName === userName && !isShowDropdown) ? 'collapse show' : 'collapse'}>
+      <div className={(userNameFromHook === userName && isShowDropdown) ? 'collapse show' : 'collapse'}>
         <div className="card-body">
           {repositories
             ? repositories

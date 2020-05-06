@@ -1,43 +1,43 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import { requestApiCallWithRepositories } from '../../store/actions/github-actions/github-actions'
+import { useCallbackData, useUserName } from '../../custom-hooks/index'
 
 import { GithubRepository } from './GithubRepository'
 
 export const GithubRepositoryContainer = () => {
-  const dispatch = useDispatch()
-  const [checkedUserName, setGetUserName] = useState('')
   const [isShowDropdown, setIsShowDropdown] = useState(false)
+
+  const { userName: userNameFromHook, userNameHandler } = useUserName()
+
+  const { callback } = useCallbackData(requestApiCallWithRepositories, userNameFromHook)
 
   const users = useSelector(state => state.users.data)
   const repositories = useSelector(state => state.repositories.data)
 
   const toggleDropdown = () => setIsShowDropdown(!isShowDropdown)
 
-  const getUserName = userName => setGetUserName(userName)
-
-  const getRepositories = userName =>  dispatch(requestApiCallWithRepositories(userName))
+  useEffect(() => {
+    callback()
+  }, [userNameFromHook]);
 
   return(
     <>
       {
-        users
-          ? users.map(({ login }) => (
-              <GithubRepository
-                key={login}
-                userName={login}
-                {...{
-                  isShowDropdown,
-                  repositories,
-                  checkedUserName,
-                  getUserName,
-                  getRepositories,
-                  toggleDropdown
-                }}
-              />
-            ))
-          : ""
+        users && users.map(({ login }) => (
+          <GithubRepository
+            key={login}
+            userName={login}
+            {...{
+              isShowDropdown,
+              repositories,
+              userNameFromHook,
+              userNameHandler,
+              toggleDropdown
+            }}
+          />
+        ))
       }
     </>
   )
