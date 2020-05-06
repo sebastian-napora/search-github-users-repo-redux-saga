@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { FormContainer } from './form/formContainer'
-import { GithubRepositoryContainer } from './github-repository-container/GithubRepositoryContainer'
+import { GithubRepositoryContainer } from './github-repository/GithubRepositoryContainer'
 
 export const Content = () => (
   <div className="content">
