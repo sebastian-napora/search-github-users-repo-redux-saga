@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/search-github-users-repo-redux-saga/static/css/main.8750a2cd.css",
+    "main.js": "/search-github-users-repo-redux-saga/static/js/main.d73a8ca2.js",
+    "index.html": "/search-github-users-repo-redux-saga/index.html",
+    "main.8750a2cd.css.map": "/search-github-users-repo-redux-saga/static/css/main.8750a2cd.css.map",
+    "main.d73a8ca2.js.map": "/search-github-users-repo-redux-saga/static/js/main.d73a8ca2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8750a2cd.css",
+    "static/js/main.d73a8ca2.js"
+  ]
+}
