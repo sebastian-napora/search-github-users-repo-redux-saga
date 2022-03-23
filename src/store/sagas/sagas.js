@@ -10,7 +10,7 @@ import {
 
 const repositoriesService = ServiceFactory.get('repositories')
 
-function* getUsers (action) {
+function* getUsers(action) {
   const { userName } = action
 
   try {
@@ -22,7 +22,7 @@ function* getUsers (action) {
   }
 }
 
-function* getRepositories (action) {
+function* getRepositories(action) {
   const { userName } = action
 
   try {
@@ -35,7 +35,7 @@ function* getRepositories (action) {
 
 }
 
-function* mySaga () {
+function* mySaga() {
   yield takeEvery(REQUEST_API_USERS, getUsers)
   yield takeEvery(REQUEST_API_REPOSITORIES, getRepositories)
 }
