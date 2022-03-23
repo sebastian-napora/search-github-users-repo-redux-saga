@@ -1,8 +1,8 @@
 {
-  "name": "github-repositories-explorer",
+  "name": "search-github-users-repo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Scherlock90.github.io/search-github-users-repo/",
+  "homepage": "https://sebastian-napora/search-github-users-repo/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
