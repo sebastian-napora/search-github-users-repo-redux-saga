@@ -1,8 +1,8 @@
 {
-  "name": "search-github-users-repo",
+  "name": "search-github-users-repo-redux-saga",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sebastian-napora/search-github-users-repo/",
+  "homepage": "https://sebastian-napora/search-github-users-repo-redux-saga/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
